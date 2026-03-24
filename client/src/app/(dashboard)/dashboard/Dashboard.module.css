@@ -1,0 +1,39 @@
+.wrapper {
+  padding: 20px;
+}
+
+.title {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  margin-bottom: 20px;
+}
+
+.subtitle span {
+  font-weight: 500;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  display: block;
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  text-decoration: none;
+  color: black;
+  font-weight: 500;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  transition: 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}

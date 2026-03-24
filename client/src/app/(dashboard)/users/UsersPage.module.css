@@ -1,0 +1,75 @@
+.container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.title {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 15px 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+}
+
+.email {
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.email:hover {
+  text-decoration: underline;
+}
+
+.role {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #666;
+}
+
+.adminButtons {
+  display: flex;
+  gap: 10px;
+}
+
+.button {
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.button:hover {
+  opacity: 0.9;
+}
+
+.delete {
+  background-color: #e74c3c;
+}

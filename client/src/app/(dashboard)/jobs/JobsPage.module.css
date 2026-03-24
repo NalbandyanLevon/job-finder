@@ -1,0 +1,54 @@
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.titleHeader {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: 0.2s;
+  cursor: pointer;
+  height: 25vh;
+  color: #666;
+}
+
+.title {
+  margin-bottom: 5px;
+}
+
+.company {
+  margin-bottom: 10px;
+}
+
+.status {
+  color: #fff;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  display: inline-block;
+}
+
+.applied {
+  background: #3498db;
+}
+
+.interview {
+  background: #f1c40f;
+}
+
+.offer {
+  background: #2ecc71;
+}
+
+.rejected {
+  background: #e74c3c;
+}
+
+.location {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #666;
+}
