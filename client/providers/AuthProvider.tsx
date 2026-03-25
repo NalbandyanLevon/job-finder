@@ -5,7 +5,7 @@ import { refresh } from "@/services/api/auth";
 import { useAuthStore } from "@/store/authStore";
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
-  const { setAccessToken, setUser } = useAuthStore();
+  const { setAccessToken, setUser, setIsLoading } = useAuthStore();
 
   useEffect(() => {
     const init = async () => {
@@ -18,11 +18,13 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       } catch {
         setAccessToken(null);
         setUser(null);
+      } finally {
+        setIsLoading(false);
       }
     };
 
     init();
-  }, [setAccessToken, setUser]);
+  }, [setAccessToken, setIsLoading, setUser]);
 
   return <>{children}</>;
 };

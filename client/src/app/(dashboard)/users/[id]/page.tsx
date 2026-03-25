@@ -10,8 +10,9 @@ import { updateUser } from "@/features/users/api/users";
 import { CreateJobForm } from "@/features/jobs/ui/CreateForm/CreateJobForm";
 import { useJobsByUser } from "@/features/jobs/model/useJobsByUser";
 
-import styles from "./UserPage.module.css";
 import Link from "next/link";
+
+import styles from "./UserPage.module.css";
 
 export default function UserPage() {
   const params = useParams();
@@ -120,7 +121,7 @@ export default function UserPage() {
         )}
       </div>
 
-      <div className={styles.jobsSection}>
+      <div>
         <h2>{isOwnProfile ? "My Jobs" : "User Jobs"}</h2>
         <div className={styles.jobsGrid}>
           {jobsData?.data.map((job) => (
@@ -138,11 +139,15 @@ export default function UserPage() {
       </div>
 
       {isOwnProfile && (
-        <div className={styles.addJob}>
+        <div>
           <h2>Add Job</h2>
           <CreateJobForm />
         </div>
       )}
+
+      <Link href={"/users"} className={styles.link}>
+        Back to users
+      </Link>
     </div>
   );
 }

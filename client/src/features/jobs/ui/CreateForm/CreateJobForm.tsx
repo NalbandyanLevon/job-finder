@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { SubmitEventHandler, useState } from "react";
 import { JobStatus } from "@/entities/job/types";
 import { useCreateJob } from "../../model/useCreateJob";
 
@@ -22,7 +22,9 @@ export const CreateJobForm = () => {
     setLocation("");
   };
 
-  const handleSubmit = () => {
+  const handleSubmit: SubmitEventHandler<HTMLFormElement> = (e) => {
+    e.preventDefault();
+
     if (!title || !company) {
       alert("Title and Company are required");
       return;
@@ -39,42 +41,39 @@ export const CreateJobForm = () => {
   };
 
   return (
-    <div className={styles.container}>
-      <div className={styles.formRow}>
-        <input
-          className={styles.input}
-          value={title}
-          placeholder="Job Title"
-          onChange={(e) => setTitle(e.target.value)}
-        />
+    <form className={styles.container} onSubmit={handleSubmit}>
+      <input
+        className={styles.input}
+        value={title}
+        placeholder="Job Title"
+        onChange={(e) => setTitle(e.target.value)}
+      />
 
-        <input
-          className={styles.input}
-          value={description}
-          placeholder="Description"
-          onChange={(e) => setDescription(e.target.value)}
-        />
-      </div>
+      <textarea
+        className={styles.textarea}
+        value={description}
+        placeholder="Description"
+        onChange={(e) => setDescription(e.target.value)}
+        rows={4}
+      />
 
-      <div className={styles.formRow}>
-        <input
-          className={styles.input}
-          value={company}
-          placeholder="Company"
-          onChange={(e) => setCompany(e.target.value)}
-        />
+      <input
+        className={styles.input}
+        value={company}
+        placeholder="Company"
+        onChange={(e) => setCompany(e.target.value)}
+      />
 
-        <input
-          className={styles.input}
-          value={location}
-          placeholder="Location"
-          onChange={(e) => setLocation(e.target.value)}
-        />
-      </div>
+      <input
+        className={styles.input}
+        value={location}
+        placeholder="Location"
+        onChange={(e) => setLocation(e.target.value)}
+      />
 
-      <button className={styles.button} onClick={handleSubmit}>
+      <button className={styles.button} type="submit">
         Create Job
       </button>
-    </div>
+    </form>
   );
 };

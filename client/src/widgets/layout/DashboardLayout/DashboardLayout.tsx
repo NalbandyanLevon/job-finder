@@ -1,6 +1,6 @@
 "use client";
 
-import { ReactNode } from "react";
+import { ReactNode, useEffect } from "react";
 import Link from "next/link";
 import { useAuthStore } from "@/store/authStore";
 import { useRouter } from "next/navigation";
@@ -8,13 +8,23 @@ import { useRouter } from "next/navigation";
 import styles from "./DashboardLayout.module.css";
 
 export const DashboardLayout = ({ children }: { children: ReactNode }) => {
-  const { user, logout } = useAuthStore();
+  const { user, logout, accessToken, isLoading } = useAuthStore();
   const router = useRouter();
+
+  useEffect(() => {
+    if (!accessToken && !isLoading) {
+      router.push("/login");
+    }
+  }, [accessToken, isLoading, router]);
 
   const handleLogout = () => {
     logout();
     router.push("/login");
   };
+
+  if (!accessToken) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div className={styles.container}>
@@ -28,8 +38,7 @@ export const DashboardLayout = ({ children }: { children: ReactNode }) => {
 
       <div className={styles.header}>
         <header>
-          <h3>Job Tracker: Here you can add your open positions</h3>
-
+          <h3>Here you can add your open positions</h3>
           <div>
             <span>
               {user?.email} {user?.role === "admin" && "admin"}

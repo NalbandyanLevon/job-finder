@@ -34,10 +34,7 @@ const JobsPage = () => {
       <h1>Jobs</h1>
       <div className={styles.container}>
         {data.data.map((job: IJob) => (
-          <Link
-            href={`/jobs/${job._id}`}
-            key={job._id}
-          >
+          <Link href={`/jobs/${job._id}`} key={job._id}>
             <div
               className={styles.titleHeader}
               onMouseEnter={(e) => {

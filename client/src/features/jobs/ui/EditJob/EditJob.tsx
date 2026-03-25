@@ -1,12 +1,23 @@
 "use client";
 
 import { IJob } from "@/entities/job/types";
-import { FC, useState } from "react";
-import styles from "./EditJob.module.css";
+import { FC, SubmitEventHandler, useState } from "react";
 import { useUpdateJob } from "../../model/useUpdateJob";
 
-export const EditJob: FC<IJob> = ({ title, _id, company, description, location }) => {
-  const [isOpen, setIsOpen] = useState(true);
+import styles from "./EditJob.module.css";
+
+interface IProps extends IJob {
+  onClose: () => void;
+}
+
+export const EditJob: FC<IProps> = ({
+  title,
+  _id,
+  company,
+  description,
+  location,
+  onClose,
+}) => {
   const [newTitle, setNewTitle] = useState(title);
   const [newDescription, setNewDescription] = useState(description);
   const [newCompany, setNewCompany] = useState(company);
@@ -14,7 +25,9 @@ export const EditJob: FC<IJob> = ({ title, _id, company, description, location }
 
   const mutation = useUpdateJob();
 
-  const handleUpdate = () => {
+  const handleUpdate: SubmitEventHandler<HTMLFormElement> = (e) => {
+    e.preventDefault();
+
     mutation.mutate({
       id: _id,
       data: {
@@ -24,28 +37,27 @@ export const EditJob: FC<IJob> = ({ title, _id, company, description, location }
         location: newLocation,
       },
     });
-    setIsOpen(false);
+    onClose();
   };
 
   const handleCancel = () => {
-    setIsOpen(false);
+    onClose();
   };
 
-  if (!isOpen) return null;
-
   return (
-    <div className={styles.modal}>
+    <form className={styles.modal} onSubmit={handleUpdate}>
       <input
         className={styles.input}
         value={newTitle}
         placeholder="Job Title"
         onChange={(e) => setNewTitle(e.target.value)}
       />
-      <input
-        className={styles.input}
-        value={newDescription}
+      <textarea
+        className={styles.textarea}
+        value={description}
         placeholder="Description"
         onChange={(e) => setNewDescription(e.target.value)}
+        rows={4}
       />
       <input
         className={styles.input}
@@ -61,13 +73,17 @@ export const EditJob: FC<IJob> = ({ title, _id, company, description, location }
       />
 
       <div className={styles.buttonRow}>
-        <button className={styles.cancelButton} onClick={handleCancel}>
+        <button
+          className={styles.cancelButton}
+          onClick={handleCancel}
+          type="button"
+        >
           Cancel
         </button>
-        <button className={styles.saveButton} onClick={handleUpdate}>
+        <button className={styles.saveButton} type="submit">
           Save
         </button>
       </div>
-    </div>
+    </form>
   );
 };

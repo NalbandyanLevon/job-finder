@@ -5,7 +5,7 @@
 
 .container aside {
     width: 240px;
-    background-color: #111;
+    background-color: #666;
     color: #fff;
     padding: 20px;
     display: flex;
@@ -18,17 +18,17 @@
     display: flex;
     flex-direction: column;
 }
+
 .header header {
     height: 60px;
     background-color: #626262;
-    border-bottom: 1px solid #eee;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0 20px;
 }
 
-.header div {
+.header header div {
     display: flex;
     gap: 10px;
     align-items: center;
@@ -37,6 +37,6 @@
 .header main {
     flex: 1;
     padding: 20px;
-    background-color: #626262;
+    background: linear-gradient(90deg, #999999, #414141);
     overflow-y: auto;
 }

@@ -5,9 +5,10 @@ import { useAuthStore } from "@/store/authStore";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 
-import styles from "./JobPage.module.css";
 import { useState } from "react";
 import { EditJob } from "@/features/jobs/ui/EditJob/EditJob";
+
+import styles from "./JobPage.module.css";
 
 const JobPage = () => {
   const { id } = useParams();
@@ -20,8 +21,8 @@ const JobPage = () => {
   const job = data?.data;
 
   const isMyOwnJob = data?.data?.user === user?._id;
+  
   if (!job) return <div>Job not found</div>;
-  console.log(isEditing)
 
   return (
     <div className={styles.container}>
@@ -56,7 +57,9 @@ const JobPage = () => {
 
       {isMyOwnJob && (
         <>
-          {isEditing && <EditJob {...job} />}
+          {isEditing && (
+            <EditJob {...job} onClose={() => setIsEditing(false)} />
+          )}
           <div className={styles.adminButtons}>
             <button
               className={`${styles.button} ${styles.edit}`}

@@ -2,27 +2,30 @@
   max-width: 1000px;
   margin: 0 auto;
   padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .title {
   font-size: 2rem;
-  margin-bottom: 20px;
 }
 
 .card {
+  display: flex;
+  flex-direction: column;
   background-color: #fff;
   padding: 20px;
   border-radius: 12px;
   box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-  margin-bottom: 30px;
   color: #666;
+  gap: 15px;
 }
 
 .field {
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-bottom: 15px;
 }
 
 .input, .select {
@@ -34,7 +37,6 @@
 .buttons {
   display: flex;
   gap: 10px;
-  margin-top: 15px;
 }
 
 .edit {
@@ -64,10 +66,6 @@
   cursor: pointer;
 }
 
-.jobsSection {
-  margin-top: 30px;
-}
-
 .jobsGrid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -89,12 +87,17 @@
   box-shadow: 0 8px 20px rgba(0,0,0,0.1);
 }
 
-.addJob {
-  margin-top: 30px;
-}
 
 .loading, .notFound {
   text-align: center;
   font-size: 1.2rem;
   color: #666;
+}
+
+.link {
+  width: max-content;
+  padding: 10px 15px;
+  border-radius: 8px;
+  background-color: black;
+  color: #fff;
 }
