@@ -5,12 +5,16 @@ import { useUsers } from "@/features/users/model/useUsers";
 import { useAuthStore } from "@/store/authStore";
 import Link from "next/link";
 
+import { useTranslation } from "react-i18next";
+import "@/i18n";
+
 import styles from "./UsersPage.module.css";
 
 export default function UsersPage() {
   const { data, isLoading, refetch } = useUsers();
   const { user: currentUser } = useAuthStore();
   const deleteMutation = useDelete();
+  const { t } = useTranslation();
 
   const handleDelete = (id: string, email: string) => {
     if (!confirm(`Are you sure you want to delete ${email} account?`)) return;
@@ -23,7 +27,7 @@ export default function UsersPage() {
 
   return (
     <div className={styles.container}>
-      <h1 className={styles.title}>All Users</h1>
+      <h1 className={styles.title}>{t("Users.title")}</h1>
       <div className={styles.grid}>
         {data?.data.map((eachUser) => (
           <div key={eachUser._id} className={styles.card}>
@@ -39,7 +43,7 @@ export default function UsersPage() {
                   className={`${styles.button} ${styles.delete}`}
                   onClick={() => handleDelete(eachUser._id, eachUser.email)}
                 >
-                  Delete
+                  {t("Profile.delete")}
                 </button>
               </div>
             )}

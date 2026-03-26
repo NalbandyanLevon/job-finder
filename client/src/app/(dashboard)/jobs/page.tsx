@@ -7,9 +7,11 @@ import { useAuthStore } from "@/store/authStore";
 import Link from "next/link";
 
 import styles from "./JobsPage.module.css";
+import { useTranslation } from "react-i18next";
 
 const JobsPage = () => {
   const { user } = useAuthStore();
+  const { t } = useTranslation();
 
   const isAdmin = user?.role === "admin";
 
@@ -31,7 +33,7 @@ const JobsPage = () => {
 
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "5vh" }}>
-      <h1>Jobs</h1>
+      <h1>{t("Jobs.title")}</h1>
       <div className={styles.container}>
         {data.data.map((job: IJob) => (
           <Link href={`/jobs/${job._id}`} key={job._id}>

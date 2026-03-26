@@ -1,0 +1,61 @@
+{
+  "Login": {
+    "title": "Welcome back",
+    "subTitle": "Login to your account",
+    "login": "Login",
+    "createAccount": "Don't have an account ?",
+    "register": "Register"
+  },
+  "Register": {
+    "title": "Create account",
+    "subTitle": "Start tracking your jobs",
+    "register": "Register",
+    "haveAccount": "Already have an account ?",
+    "login": "Login"
+  },
+  "Dashboard": {
+    "title": "Dashboard",
+    "welcome": "Welcome",
+    "jobs": "Jobs",
+    "profile": "My Profile",
+    "users": "Manage Users"
+  },
+  "Header": {
+    "title": "Here you can add your oprn positions",
+    "logout": "Logout"
+  },
+  "Jobs": {
+    "title": "Jobs",
+    "back": "Back to jobs page",
+    "location": "Location",
+    "description": "Description",
+    "edit": "Edit",
+    "delete": "Delete"
+  },
+  "Profile": {
+    "myTitle": "My Profile",
+    "userTitle": "User Profile",
+    "edit": "Edit Profile",
+    "save": "Save",
+    "delete": "Delete Account",
+    "myJobs": "My Jobs",
+    "userJobs": "User Jobs",
+    "addJob": "Add Job",
+    "jobTitle": "Job Title",
+    "description": "Description",
+    "company": "Company",
+    "location": "Location",
+    "cancel": "Cancel",
+    "create": "Create Job",
+    "back": "Back to users"
+  },
+  "Sidebar": {
+    "dashboard": "Dashboard",
+    "jobs": "Jobs",
+    "users": "Users",
+    "profile": "Profile"
+  },
+  "Users": {
+    "title": "All users"
+  }
+}

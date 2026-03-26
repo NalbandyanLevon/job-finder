@@ -5,6 +5,7 @@ import { FC, SubmitEventHandler, useState } from "react";
 import { useUpdateJob } from "../../model/useUpdateJob";
 
 import styles from "./EditJob.module.css";
+import { useTranslation } from "react-i18next";
 
 interface IProps extends IJob {
   onClose: () => void;
@@ -23,6 +24,7 @@ export const EditJob: FC<IProps> = ({
   const [newCompany, setNewCompany] = useState(company);
   const [newLocation, setNewLocation] = useState(location);
 
+  const { t } = useTranslation();
   const mutation = useUpdateJob();
 
   const handleUpdate: SubmitEventHandler<HTMLFormElement> = (e) => {
@@ -49,26 +51,26 @@ export const EditJob: FC<IProps> = ({
       <input
         className={styles.input}
         value={newTitle}
-        placeholder="Job Title"
+        placeholder={t("Profile.jobTitle")}
         onChange={(e) => setNewTitle(e.target.value)}
       />
       <textarea
         className={styles.textarea}
         value={description}
-        placeholder="Description"
+        placeholder={t("Profile.description")}
         onChange={(e) => setNewDescription(e.target.value)}
         rows={4}
       />
       <input
         className={styles.input}
         value={newCompany}
-        placeholder="Company"
+        placeholder={t("Profile.company")}
         onChange={(e) => setNewCompany(e.target.value)}
       />
       <input
         className={styles.input}
         value={newLocation}
-        placeholder="Location"
+        placeholder={t("Profile.location")}
         onChange={(e) => setNewLocation(e.target.value)}
       />
 
@@ -78,10 +80,10 @@ export const EditJob: FC<IProps> = ({
           onClick={handleCancel}
           type="button"
         >
-          Cancel
+          {t("Profile.cancel")}
         </button>
         <button className={styles.saveButton} type="submit">
-          Save
+          {t("Profile.save")}
         </button>
       </div>
     </form>

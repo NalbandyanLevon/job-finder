@@ -1,0 +1,46 @@
+.container {
+  position: relative;
+  display: inline-block;
+}
+
+.current {
+  background: #666;
+  border: 1px solid #ccc;
+  padding: 0.3rem 0.6rem;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-weight: 500;
+}
+
+.dropdown {
+  position: absolute;
+  top: 110%;
+  left: 0;
+  background: #666;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 0.2rem 0;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  z-index: 50;
+  min-width: 80px;
+}
+
+.dropdown li {
+  padding: 0.3rem 0.6rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  transition: background 0.2s;
+}
+
+.dropdown li:hover {
+  background: #f0f0f0;
+}
+
+.flag {
+  font-size: 1.2rem;
+}

@@ -12,6 +12,9 @@ import { useJobsByUser } from "@/features/jobs/model/useJobsByUser";
 
 import Link from "next/link";
 
+import { useTranslation } from "react-i18next";
+import "@/i18n";
+
 import styles from "./UserPage.module.css";
 
 export default function UserPage() {
@@ -29,6 +32,7 @@ export default function UserPage() {
   const [email, setEmail] = useState("");
   const [role, setRole] = useState<TRole>(currentUser?.role ?? "user");
 
+  const { t } = useTranslation();
   const deleteMutation = useDelete();
 
   if (isLoading) return <div className={styles.loading}>Loading...</div>;
@@ -69,7 +73,7 @@ export default function UserPage() {
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>
-        {isOwnProfile ? "My Profile" : "User Profile"}
+        {isOwnProfile ? t("Profile.myTitle") : t("Profile.userTitle")}
       </h1>
 
       <div className={styles.card}>
@@ -107,22 +111,22 @@ export default function UserPage() {
           <div className={styles.buttons}>
             {!isEditing ? (
               <button className={styles.edit} onClick={startEdit}>
-                Edit Profile
+                {t("Profile.edit")}
               </button>
             ) : (
               <button className={styles.save} onClick={handleSave}>
-                Save
+                {t("Profile.save")}
               </button>
             )}
             <button className={styles.delete} onClick={handleDelete}>
-              Delete Account
+              {t("Profile.delete")}
             </button>
           </div>
         )}
       </div>
 
       <div>
-        <h2>{isOwnProfile ? "My Jobs" : "User Jobs"}</h2>
+        <h2>{isOwnProfile ? t("Profile.myJobs") : t("Profile.userJobs")}</h2>
         <div className={styles.jobsGrid}>
           {jobsData?.data.map((job) => (
             <Link
@@ -140,13 +144,13 @@ export default function UserPage() {
 
       {isOwnProfile && (
         <div>
-          <h2>Add Job</h2>
+          <h2>{t("Profile.addJob")}</h2>
           <CreateJobForm />
         </div>
       )}
 
       <Link href={"/users"} className={styles.link}>
-        Back to users
+        {t("Profile.back")}
       </Link>
     </div>
   );

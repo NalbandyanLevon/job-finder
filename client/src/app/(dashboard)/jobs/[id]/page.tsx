@@ -8,10 +8,14 @@ import { useParams } from "next/navigation";
 import { useState } from "react";
 import { EditJob } from "@/features/jobs/ui/EditJob/EditJob";
 
+import { useTranslation } from "react-i18next";
+import "@/i18n";
+
 import styles from "./JobPage.module.css";
 
 const JobPage = () => {
   const { id } = useParams();
+  const { t } = useTranslation();
   const { data, isLoading } = useGetOneJob(id!.toString());
   const { user } = useAuthStore();
   const [isEditing, setIsEditing] = useState(false);
@@ -21,7 +25,7 @@ const JobPage = () => {
   const job = data?.data;
 
   const isMyOwnJob = data?.data?.user === user?._id;
-  
+
   if (!job) return <div>Job not found</div>;
 
   return (
@@ -32,7 +36,7 @@ const JobPage = () => {
           <h3>{job.company}</h3>
         </div>
         <Link href={"/jobs"} className={styles.link}>
-          Back to jobs page
+          {t("Jobs.back")}
         </Link>
       </div>
 
@@ -43,14 +47,14 @@ const JobPage = () => {
       <div className={styles.location}>
         {job.location && (
           <p>
-            📍 <strong>Location:</strong> {job.location}
+            📍 <strong>{t("Jobs.location")}:</strong> {job.location}
           </p>
         )}
       </div>
 
       {job.description && (
         <div className={styles.description}>
-          <h3>Description</h3>
+          <h3>{t("Jobs.description")}</h3>
           <p>{job.description}</p>
         </div>
       )}
@@ -66,13 +70,13 @@ const JobPage = () => {
               onClick={() => setIsEditing((prev) => !prev)}
               disabled={isEditing}
             >
-              Edit
+              {t("Jobs.edit")}
             </button>
             <button
               className={`${styles.button} ${styles.delete}`}
               disabled={isEditing}
             >
-              Delete
+              {t("Jobs.delete")}
             </button>
           </div>
         </>

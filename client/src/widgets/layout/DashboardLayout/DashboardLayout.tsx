@@ -6,6 +6,7 @@ import { useAuthStore } from "@/store/authStore";
 import { useRouter } from "next/navigation";
 
 import styles from "./DashboardLayout.module.css";
+import { LanguageSwitcher } from "@/shared/ui/LanguageSwitcher/LanguageSwitcher";
 
 export const DashboardLayout = ({ children }: { children: ReactNode }) => {
   const { user, logout, accessToken, isLoading } = useAuthStore();
@@ -43,6 +44,9 @@ export const DashboardLayout = ({ children }: { children: ReactNode }) => {
             <span>
               {user?.email} {user?.role === "admin" && "admin"}
             </span>
+
+            <LanguageSwitcher />
+
             <button onClick={handleLogout}>Logout</button>
           </div>
         </header>

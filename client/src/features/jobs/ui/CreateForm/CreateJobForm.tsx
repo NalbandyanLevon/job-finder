@@ -5,6 +5,7 @@ import { JobStatus } from "@/entities/job/types";
 import { useCreateJob } from "../../model/useCreateJob";
 
 import styles from "./CreateJobForm.module.css";
+import { useTranslation } from "react-i18next";
 
 export const CreateJobForm = () => {
   const [title, setTitle] = useState("");
@@ -12,6 +13,7 @@ export const CreateJobForm = () => {
   const [company, setCompany] = useState("");
   const [status] = useState<JobStatus>("applied");
   const [location, setLocation] = useState("");
+  const { t } = useTranslation();
 
   const createMutation = useCreateJob();
 
@@ -45,14 +47,14 @@ export const CreateJobForm = () => {
       <input
         className={styles.input}
         value={title}
-        placeholder="Job Title"
+        placeholder={t("Profile.jobTitle")}
         onChange={(e) => setTitle(e.target.value)}
       />
 
       <textarea
         className={styles.textarea}
         value={description}
-        placeholder="Description"
+        placeholder={t("Profile.description")}
         onChange={(e) => setDescription(e.target.value)}
         rows={4}
       />
@@ -60,19 +62,19 @@ export const CreateJobForm = () => {
       <input
         className={styles.input}
         value={company}
-        placeholder="Company"
+        placeholder={t("Profile.company")}
         onChange={(e) => setCompany(e.target.value)}
       />
 
       <input
         className={styles.input}
         value={location}
-        placeholder="Location"
+        placeholder={t("Profile.location")}
         onChange={(e) => setLocation(e.target.value)}
       />
 
       <button className={styles.button} type="submit">
-        Create Job
+        {t("Profile.create")}
       </button>
     </form>
   );
